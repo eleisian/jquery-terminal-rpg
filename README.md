@@ -1,6 +1,7 @@
 # jquery-terminal-rpg
 
 v1.0
+https://sturdybinder.github.io/jquery-terminal-rpg/
 ![alt text](https://i.imgur.com/cguqunx.png)
 
 For this assignment, I know we were supposed to use the (prompt) command and console.log, however if this game is meant to be played in a console,

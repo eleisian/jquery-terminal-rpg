@@ -29,6 +29,7 @@ async function animateMessages(terminal, messages) {
 async function game(terminal) {
   let playerWinCount = 0;
   let computerWinCount = 0;
+
   for (let i = 0; i < 5; i++) {
     terminal.echo(`\nRound ${i + 1}:`);
     await new Promise((resolve) => setTimeout(resolve, 200));
@@ -56,8 +57,10 @@ async function game(terminal) {
       computerWinCount++;
     }
   }
+
   terminal.echo(`Player wins: ${playerWinCount}`);
   terminal.echo(`Computer wins: ${computerWinCount}`);
+
   if(computerWinCount > playerWinCount){
     terminal.echo("The Computer wins the series.")
   }
@@ -67,9 +70,7 @@ async function game(terminal) {
   else {
     terminal.echo("It's a tie!")
   }
-
 }
-
 
 function playRound(terminal, playerSelection, computerSelection) {
   if (

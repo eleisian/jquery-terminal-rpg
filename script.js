@@ -1,4 +1,3 @@
-
 const messages = [
   "Let's begin.",
   "Rock.",
@@ -102,7 +101,7 @@ $("#terminal").terminal(
         {
           body: JSON.stringify({
             "model": "text-davinci-002",
-            "prompt": prompt,
+            "prompt": "you angry because someone keeps inputting the wrong command",
             "temperature": 0.7,
             "max_tokens": 128,
             "stop": ["\n"]
@@ -110,7 +109,7 @@ $("#terminal").terminal(
           method: "POST",
           headers: {
             "content-type": "application/json",
-            "Authorization": `Bearer ${api_key}`,
+            "Authorization": `Bearer API_KEY`,
           },
         }
       );

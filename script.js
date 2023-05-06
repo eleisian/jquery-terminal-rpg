@@ -95,7 +95,8 @@ $("#terminal").terminal(
     } else if (command === "/help") {
       terminal.echo("If you're having trouble, just type 'Play' to start a game!");
     } else {
-      const prompt = `User input: ${command}\nAI response:`;
+      terminal.echo("That is an invalid command type /help for more information.")
+      /*const prompt = `User input: ${command}\nAI response:`;
       const response = await fetch(
         `https://api.openai.com/v1/completions`,
         {
@@ -119,7 +120,7 @@ $("#terminal").terminal(
         terminal.echo(text);
       } else {
         terminal.echo("Error fetching response from OpenAI API.");
-      }
+      }*/
     }
   },
   {

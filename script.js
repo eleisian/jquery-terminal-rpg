@@ -26,7 +26,7 @@ async function animateMessages(terminal, messages) {
   }
 }
 
-async function playGame(terminal) {
+async function game(terminal) {
   let playerWinCount = 0;
   let computerWinCount = 0;
   for (let i = 0; i < 5; i++) {
@@ -36,7 +36,7 @@ async function playGame(terminal) {
     let playerSelection = await terminal.read(
       `Please enter your selection (rock, paper, scissors): \n> `
     );
-    if (!["rock", "paper", "scissors"].includes(playerSelection.toLowerCase())) {
+    if (!["rock", "paper", "scissors"].includes(playerSelection.toLowerCase().trim())) {
       terminal.echo("Invalid selection. Please try again.");
       i--;
       continue;
@@ -45,7 +45,7 @@ async function playGame(terminal) {
     const computerSelection = computerPlayer();
     terminal.echo(`\nThe computer chooses ${computerSelection}\n`);
     await new Promise((resolve) => setTimeout(resolve, 500));
-    let winner = calculateWinner(
+    let winner = playRound(
       terminal,
       playerSelection.toLowerCase(),
       computerSelection
@@ -71,7 +71,7 @@ async function playGame(terminal) {
 }
 
 
-function calculateWinner(terminal, playerSelection, computerSelection) {
+function playRound(terminal, playerSelection, computerSelection) {
   if (
     (playerSelection == "rock" && computerSelection == "scissors") ||
     (playerSelection == "paper" && computerSelection == "rock") ||
@@ -90,8 +90,9 @@ function calculateWinner(terminal, playerSelection, computerSelection) {
 
 $("#terminal").terminal(
   async function (command, terminal) {
+    command = command.trim();
     if (command === "play" || command === "Play") {
-      playGame(terminal);
+      game(terminal);
     } else if (command === "/help") {
       terminal.echo("If you're having trouble, just type 'Play' to start a game!");
     } else {
@@ -117,7 +118,7 @@ $("#terminal").terminal(
       if (response.ok) {
         const json = await response.json();
         const text = json.choices[0].text.trim();
-        terminal.echo(text);
+        terminal.echo("Computer " + text);
       } else {
         terminal.echo("Error fetching response from OpenAI API.");
       }*/

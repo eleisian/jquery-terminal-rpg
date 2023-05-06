@@ -14,7 +14,5 @@ I am in the process of building this project with webpack-cli so I can use doten
 
 Unfortunately, I ran out of time doing this. 
 
-You can play the game here: https://sturdybinder.github.io/jquery-terminal-rpg/
-
 I hope you enjoy! 
 
